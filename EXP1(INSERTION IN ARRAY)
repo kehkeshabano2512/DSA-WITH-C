@@ -1,0 +1,35 @@
+// WAP to insert a elements is the array in c++
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[10];
+    int i,item1,item2,pos,n;
+    cout<<"enter the number of elements in an array:"<<"\n";
+    cin>>n;
+    cout<<"enter Array elements:";
+    for(i=0;i<n;i++)
+    {
+                    cin>>a[i];
+    }
+    for(i=0;i<n;i++)
+    {
+                    cout<<a[i]<<"\t";
+    }
+    //insertion at end
+    cout<"enter the element you want to insert at the end of array:";
+    cin>>item1;
+    a[n]=item1;
+    n=n+1;
+    cout<<"Array after Insertion:"<<"\n";
+    for(i=0;i<n;i++)
+    {
+                    cout<<a[i]<<"\t";
+    }
+    return 0;
+}
+
+    
+    
+    
+                    
