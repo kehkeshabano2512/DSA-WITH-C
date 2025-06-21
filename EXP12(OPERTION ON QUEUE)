@@ -1,0 +1,118 @@
+
+//EXPERIMENT:- Write a program to implement insertion and deletion 
+//operations in a queue using a linear array.
+
+#include<iostream>
+void enqueue(); 
+void dequeue();
+ void display();
+
+int n, item;
+int queue[10]; 
+int rear = 0;
+int front = 0;
+
+
+int main()
+{
+int choice;
+std::cout<<"Enter total number of elements"; 
+std::cin>>n;
+do{
+std::cout<<"\n\n******MAIN MENU******\n";
+std::cout<<"\n1. Enqueue(insert) \n2. Dequeue(delete) \n3. Display \n4. Exit\n";
+std::cout<<"\n Enter your choice: ";
+std::cin>>choice; 
+switch(choice)
+{
+case 1: enqueue();
+break;
+case 2: dequeue();
+break; 
+case 3: display();
+break;
+ 
+case 4:
+ exit(0);
+break;
+default:
+	std::cout<<"\n INVALID CHOICE!!! \n";
+
+ 
+}
+}while(choice!=4); 
+return 0;
+}
+
+void enqueue()
+{
+int item;
+std::cout<<"\nEnter the item you want to insert: "; 
+std::cin>>item;
+if (rear==n)
+{
+std::cout<<"\n\n QUEUE is full. OVERFLOW. \n"; return;
+}
+else if (front==0 && rear==0)
+{
+ 
+rear = 1;
+front = 1; 
+queue[rear]=item;
+std::cout<<"\n Element inserted.";
+
+}
+else
+{
+rear = rear + 1; 
+queue[rear]=item;
+std::cout<<"\n Element inserted.";
+
+}
+}
+ 
+void dequeue()
+{
+int item;
+if (front == 0 && rear == 0)
+{
+std::cout<<"\n QUEUE is empty. UNDERFLOW!! \n"; return;
+}
+else if(front==rear)
+{
+ 
+item = queue[front]; 
+front = 0;
+rear = 0;
+
+}
+else
+{
+
+item = queue[front]; 
+front = front + 1;
+std::cout<<"\n Element deleted.";
+}
+}
+
+void display()
+{
+int i;
+std::cout<<"\nDISPLAYING ELEMENTS\n";
+if (rear==0 && front==0)
+{
+ std::cout<<"\n\n QUEUE is empty!";
+
+}
+else
+{
+ 
+for (i=front; i<= rear; i++)
+{
+ 
+std::cout<<"\n"<<queue[i]<<"\t";
+}
+}
+}
+
+
