@@ -1,0 +1,98 @@
+EXPERIMENT: Program to traverse a Binary search tree in Pre-order, In-order and
+Post-order.
+#include <iostream>
+using namespace std;
+// Structure for a tree node
+struct Node {
+int data;
+Node* left;
+Node* right;
+};
+// Function to create a new node
+Node* createNode(int value) {
+Node* newNode = new Node();
+newNode->data = value;
+newNode->left = newNode->right = NULL;
+return newNode;
+}
+// Function to insert a value into the BST
+Node* insert(Node* root, int value) {
+if (root == NULL) {
+return createNode(value);
+}
+if (value < root->data) {
+root->left = insert(root->left, value);
+} else {
+root->right = insert(root->right, value);
+}
+return root;
+}
+// Pre-order traversal
+void preOrder(Node* root) {
+if (root != NULL) {
+cout << root->data << " "; // Visit the root
+preOrder(root->left); // Traverse the left subtree
+preOrder(root->right); // Traverse the right subtree
+}
+
+}
+// In-order traversal
+void inOrder(Node* root) {
+if (root != NULL) {
+inOrder(root->left); // Traverse the left subtree
+cout << root->data << " "; // Visit the root
+inOrder(root->right); // Traverse the right subtree
+}
+}
+// Post-order traversal
+void postOrder(Node* root) {
+if (root != NULL) {
+postOrder(root->left); // Traverse the left subtree
+postOrder(root->right); // Traverse the right subtree
+cout << root->data << " "; // Visit the root
+}
+}
+int main() {
+Node* root = NULL; // Initialize the root of the tree
+int choice, value;
+do {
+cout << "\nMenu:\n";
+cout << "1. Insert a value into the BST\n";
+cout << "2. Pre-order traversal\n";
+cout << "3. In-order traversal\n";
+cout << "4. Post-order traversal\n";
+cout << "5. Exit\n";
+cout << "Enter your choice: ";
+cin >> choice;
+switch (choice) {
+case 1:
+cout << "Enter value to insert: ";
+cin >> value;
+root = insert(root, value);
+cout << value << " inserted into the BST.\n";
+break;
+case 2:
+cout << "Pre-order traversal: ";
+preOrder(root);
+
+cout << endl;
+break;
+case 3:
+cout << "In-order traversal: ";
+inOrder(root);
+cout << endl;
+break;
+case 4:
+cout << "Post-order traversal: ";
+postOrder(root);
+cout << endl;
+break;
+case 5:
+cout << "Exiting...\n";
+break;
+default:
+cout << "Invalid choice! Please try again.\n";
+}
+} while (choice != 5);
+return 0;
+}
