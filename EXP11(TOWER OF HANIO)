@@ -1,0 +1,29 @@
+//tower of honio
+#include<iostream> 
+
+
+void TOH(int n, char beg, char aux, char end)
+{
+if(n==1)
+{
+std::cout<<"Move Disk "<<n<<" from "<<beg<<" to "<<end<<"\n"; 
+//Move disk from A to C
+}
+else
+{
+TOH(n-1, beg, end, aux); //Shift n-1 disks from beg(A) to aux(B) using end(C) 
+std::cout<<"Move Disk "<<n<<" from "<<beg<<" to "<<end<<"\n"; //Move last disk from beg(A) to end(C)
+TOH(n-1, aux, beg, end); //Shift n-1 disks from aux(B) to end(C) using beg(A)
+}
+}
+
+int main()
+{
+ int n;
+std::cout<<"Enter the number of disks: "; 
+std::cin>>n;
+
+TOH(n,'A','B','C');
+
+ return 0;
+}
